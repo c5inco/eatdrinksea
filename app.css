@@ -1,0 +1,17 @@
+header .text {
+  background: url('banner-text.svg');
+
+}
+
+header .graphic {
+  background: url('banner-graphic.svg');
+}
+
+section .tile .graphic{
+  height: 100px;
+  width: 100px;
+}
+
+section .tile .graphic.coffee {
+  background: url('coffee.svg');
+}
