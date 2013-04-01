@@ -1,0 +1,26 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<g>
+	<path fill="none" stroke="#FFF" stroke-width="3" stroke-miterlimit="10" d="M70.451,79.097c0,4.511-9.403,5.167-21,5.167
+		c-11.598,0-21.066-0.656-21.066-5.167l-0.934,6c0,4.511,10.955,6.167,22,6.167c11.044,0,22-1.656,22-6.167L70.451,79.097z"/>
+	<path fill="none" stroke="#FFF" stroke-width="3" stroke-miterlimit="10" d="M41.193,24.628"/>
+	<path id="XMLID_1_" fill="none" stroke="#FFF" stroke-width="3" stroke-miterlimit="10" d="M28.385,79.973
+		c-0.295-2.593-0.744-8.664-1.403-15.216c-0.829-8.237-1.549-16.485-2.417-24.719c-0.675-6.405-1.168-13.059-2.904-19.287
+		c-0.493-1.769-1.168-4.149-3.418-5.25c-1.418-0.693-3.425-1.052-4.547-1.994c-0.872-0.732-1.547-1.778-0.872-2.695
+		c0.647-0.88,2-1.219,3.23-1.542c3.891-1.021,8.72-0.449,12.444,0.646c2.569,0.754,4.853,1.893,6.868,3.24
+		c2.019,1.349,3.887,2.795,5.548,4.37c1.367,1.295,2.723,2.53,4.875,3.198c2.353,0.731,4.963,0.916,7.501,1.042
+		c2.62,0.132,5.244,0.24,7.869,0.299c6.451,0.144,8.462,0.015,14.914,0.091l-0.856,7.864L70.39,79.64"/>
+	<path fill="none" stroke="#FFF" stroke-width="6" stroke-miterlimit="10" d="M75.576,30.555c3.276,0,7.514-0.431,9.958,2.27
+		c3.565,3.938,1.911,10.346,0.339,14.771c-1.872,5.266-4.398,10.836-8.23,14.967c-1.469,1.584-3.778,3.242-6.066,3.242"/>
+	<path fill="none" stroke="#FFF" stroke-width="3" stroke-miterlimit="10" d="M103.451,87.264"/>
+	<g>
+		<path fill="none" stroke="#FFF" stroke-width="2" stroke-miterlimit="10" d="M24.076,28.43c16.746,2.686,34.129,2.686,50.875,0
+			"/>
+	</g>
+	<circle opacity="0.75" fill="#FFF" cx="38.951" cy="73.929" r="2"/>
+	<circle opacity="0.75" fill="#FFF" cx="40.951" cy="65.929" r="3"/>
+	<circle opacity="0.75" fill="#FFF" cx="50.951" cy="45.929" r="2"/>
+	<circle opacity="0.75" fill="#FFF" cx="43.951" cy="50.93" r="3"/>
+	<circle opacity="0.75" fill="#FFF" cx="36.951" cy="40.928" r="5"/>
+</g>
+</svg>
