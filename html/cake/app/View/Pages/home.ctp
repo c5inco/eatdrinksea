@@ -23,34 +23,38 @@ echo $this->element('header');
 ?>
 
 <section class="row">
-	<?php echo $this->Html->link("<div class='tile'>
-      <div class='inner'>
-        <div class='graphic coffee'></div>
-        <div class='caption'>coffee</div>
-      </div>      
-    </div>"
-	, array('controller' => 'Pages', 'action' => 'category', $category = 'coffee'), array('escape' => false)); ?>
-	<?php echo $this->Html->link("<div class='tile'>
-      <div class='inner'>
-        <div class='graphic bpts'></div>
-        <div class='caption'>bpts</div>
-      </div>      
-    </div>"
-	, array('controller' => 'Pages', 'action' => 'category', $category = 'bpts'), array('escape' => false)); ?>
-		<?php echo $this->Html->link("    <div class='tile'>
-      <div class='inner'>
-        <div class='graphic beer'></div>
-        <div class='caption'>beer</div>
-      </div>      
-    </div>"
-	, array('controller' => 'Pages', 'action' => 'category', $category = 'beer'), array('escape' => false)); ?>
-		<?php echo $this->Html->link("<div class='tile'>
-      <div class='inner'>
-        <div class='graphic pnw'></div>
-        <div class='caption'>pnw</div>
-      </div>      
-    </div>"
-	, array('controller' => 'Pages', 'action' => 'category', $category = 'local'), array('escape' => false)); ?>
+	<a href="/coffee">
+		<div class='tile'>
+	      <div class='inner'>
+	        <div class='graphic coffee'></div>
+	        <div class='caption'>coffee</div>
+	      </div>      
+	    </div>
+	</a>
+	<a href="/bpts">
+		<div class='tile'>
+	      <div class='inner'>
+	        <div class='graphic bpts'></div>
+	        <div class='caption'>bpts</div>
+	      </div>      
+	    </div>
+	</a>
+	<a href="/beer">
+		<div class='tile'>
+	      <div class='inner'>
+	        <div class='graphic beer'></div>
+	        <div class='caption'>beer</div>
+	      </div>      
+	    </div>
+	</a>
+	<a href="local">
+		<div class='tile'>
+	      <div class='inner'>
+	        <div class='graphic pnw'></div>
+	        <div class='caption'>pnw</div>
+	      </div>      
+	    </div>
+	</a>
   </section>
 
 <?php
