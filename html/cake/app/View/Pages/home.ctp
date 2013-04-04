@@ -23,7 +23,7 @@ echo $this->element('header');
 ?>
 
 <section class="row">
-	<a href="/coffee">
+	<a href="coffee">
 		<div class='tile'>
 	      <div class='inner'>
 	        <div class='graphic coffee'></div>
@@ -31,7 +31,7 @@ echo $this->element('header');
 	      </div>      
 	    </div>
 	</a>
-	<a href="/bpts">
+	<a href="bpts">
 		<div class='tile'>
 	      <div class='inner'>
 	        <div class='graphic bpts'></div>
@@ -39,7 +39,7 @@ echo $this->element('header');
 	      </div>      
 	    </div>
 	</a>
-	<a href="/beer">
+	<a href="beer">
 		<div class='tile'>
 	      <div class='inner'>
 	        <div class='graphic beer'></div>
