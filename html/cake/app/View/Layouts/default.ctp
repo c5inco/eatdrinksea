@@ -26,6 +26,7 @@
 	<title>
 		<?php echo 'eat.drink.SEA - explore the best places to eat and drink in Seattle'?>
 	</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<?php
 		echo $this->Html->meta('icon', '../favicon.png');
 
@@ -35,6 +36,7 @@
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+		echo $this->Html->script('eatdrink');
 	?>
 </head>
 <body>

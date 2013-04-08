@@ -29,6 +29,7 @@ foreach($spotsArray as $key => $spot)
 	//echo '<div class="labelField"></div>';
 	echo '<section class="spotCard">';
 	echo '<div class="inner">';
+	echo "<input type='hidden' class='spotID' value='".json_encode($spotsArray[$key]->_id)."' />";
 	echo '<div class="displayField spotName"><a href="'.$spotsArray[$key]->website.'">'.$spotsArray[$key]->name.'</a></div>';
 	echo '<div class="displayField spotAddress"><a href="'.$spotsArray[$key]->addressURL.'">'.$spotsArray[$key]->address.', '.$spotsArray[$key]->zip.'</a></div>';
 	echo '<div class="displayField spotPhone"><a href="tel:'.$spotsArray[$key]->phone.'">'.substr($spotsArray[$key]->phone, 0, 3).'.'.substr($spotsArray[$key]->phone, 3, 3).'.'.substr($spotsArray[$key]->phone, 6, 4).'</a></div>';
@@ -39,8 +40,9 @@ foreach($spotsArray as $key => $spot)
 	echo '<div class="displayField spotTwitter"><a class="" href="'.$spotsArray[$key]->twitter.'">@'.$tw.'</a></div>';
 	}
 	echo '<div class="displayField"><span>Multiple Locations?</span><span class="spotMultipleLocations">'.$spotsArray[$key]->multipleLocations.'</span></div>';
-	//echo '<div class="labelField">How many people dig this place too?</div>';
-	//echo '<div class="displayField spotLikes">'.$spotsArray[$key]->likes.'</div>';
+	echo '<div class="likeHolder"><div class="likeButton">Like</div>';
+	echo '<div class="displayField spotLikes">'.$spotsArray[$key]->likes.'</div></div>';
+	echo '<div class="rankingNumber"></div>';
 	echo '</div>';
 	echo '</section>';
 }

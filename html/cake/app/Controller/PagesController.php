@@ -20,6 +20,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 App::uses('AppController', 'Controller');
+App::uses('HttpSocket', 'Network/Http');
 
 /**
  * Static content controller
@@ -76,4 +77,30 @@ class PagesController extends AppController {
 	public function category($category) {
 		$this->set('category', $category);
 	}
+
+	public function like() {
+		$eatdrink_config = Configure :: read('apiKey');
+		$apiKey = $eatdrink_config['apiKey'];
+
+		$this->autoRender = false;
+		$id = $this->request->data('id');
+		$likes = $this->request->data('likes');
+
+		$urlCall = "https://api.mongolab.com/api/1/databases/eatdrinksea/collections/Spots/".$id."?apiKey=".$apiKey."";
+		
+		$data = array("\$set" => array("likes" => $likes));
+
+		$datajson = json_encode($data);
+
+		$HttpSocket = new HttpSocket();			
+
+		$body = $HttpSocket->request(array(
+		'method' => 'PUT',
+		'uri' => $urlCall,
+		'header' => array('Content-Type' => 'application/json'),
+		'body' => $datajson,
+		));
+
+		
+			}
 }

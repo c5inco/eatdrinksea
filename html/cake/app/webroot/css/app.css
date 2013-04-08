@@ -200,6 +200,7 @@ section .tile:hover .inner .caption {
   margin: 0 auto 1em;
   max-width: 60em;
   clear:both;
+  position: relative;
 
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -224,13 +225,35 @@ div.spotName a{
   font-size: 2.2em;
   margin: 0 0 .3em;
   color:#333;
-  display: block;
+  display: inline-block;
   line-height: normal;
 }
 
 div.spotName a:hover, div.spotName a:focus{
   text-decoration: none;
   color:#095694;
+}
+
+.likeHolder > div {
+  display: inline-block;
+}
+
+.likeButton {
+  color:#095694;
+  cursor: pointer;
+  margin-right:1em;
+}
+
+.likeButton:hover {
+  color: #5e9732;
+}
+
+.rankingNumber {
+  font-size:12em;
+  opacity: 0.2;
+  position:absolute;
+  top:0.1em;
+  right:0.2em;
 }
 
 .spotMultipleLocations {
