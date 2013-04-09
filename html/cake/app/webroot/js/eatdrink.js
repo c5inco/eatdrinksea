@@ -1,4 +1,11 @@
+var KONAMIATTEMPT = "";
+
 $(document).ready(function() {
+	$(document).on("keydown", function(){
+		var keycode = "" + (event.keyCode ? event.keyCode : event.which);
+		konamiCode(keycode);
+	});
+
 	//Logic to highlight the selected category in the nav menu
 	var cat = $('.currentCategory').val();
 	$('.selected').removeClass('selected');
@@ -80,4 +87,19 @@ function SetCookie(cookieName,cookieValue,nDays) {
 	 expire.setTime(today.getTime() + 3600000*24*nDays);
 	 document.cookie = cookieName+"="+escape(cookieValue)
 	                 + ";expires="+expire.toGMTString();
+}
+
+function konamiCode(keycode) {
+	KONAMIATTEMPT += keycode;
+
+	if(KONAMIATTEMPT.length == 22)
+	{
+		KONAMIATTEMPT = KONAMIATTEMPT.slice(2);
+	};
+
+	var theCode = "38384040373937396665";
+	if (theCode == KONAMIATTEMPT)
+	{
+		alert("The konami code hit! Check back soon for something good!");
+	};
 }
