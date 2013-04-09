@@ -234,14 +234,14 @@ div.spotName a:hover, div.spotName a:focus{
   color:#095694;
 }
 
-.likeHolder > div {
+.likeHolder > * {
   display: inline-block;
+  margin-right: 1em;
 }
 
 .likeButton {
   color:#095694;
   cursor: pointer;
-  margin-right:1em;
 }
 
 .likeButton:hover {

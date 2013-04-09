@@ -2,3 +2,5 @@
 html/cake/app/tmp/
 *.htaccess
 
+
+html/cake/app/Config/eatdrinkconfig.php
