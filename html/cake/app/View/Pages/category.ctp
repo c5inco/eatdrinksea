@@ -40,7 +40,14 @@ foreach($spotsArray as $key => $spot)
 	echo '<div class="displayField spotTwitter"><a class="" href="'.$spotsArray[$key]->twitter.'">@'.$tw.'</a></div>';
 	}
 	echo '<div class="displayField"><span>Multiple Locations?</span><span class="spotMultipleLocations">'.$spotsArray[$key]->multipleLocations.'</span></div>';
-	echo '<div class="likeHolder"><div class="likeButton">Like</div>';
+	$cookieName = str_replace(' ', '_', $spotsArray[$key]->name);
+	if(!isset($_COOKIE[$cookieName]))
+	{
+		echo '<div class="likeHolder"><div class="likeButton">Like</div>';
+	}
+	else {
+		echo '<div class="likeHolder"><div class="likeButtonDisabled"></div>';
+	}
 	echo '<div class="displayField spotLikes">'.$spotsArray[$key]->likes.'</div></div>';
 	echo '<div class="rankingNumber"></div>';
 	echo '</div>';
