@@ -22,7 +22,6 @@ header .banner {
 }
 
 header .banner .text {
-  height: 100%;
   width: 40%;
   position:absolute;
   z-index: 2;
@@ -30,7 +29,6 @@ header .banner .text {
 }
 
 header .banner .graphic {
-  height: 100%;
   width: 65%;
   position:relative;
   left:35%;
@@ -249,10 +247,10 @@ div.spotName a:hover, div.spotName a:focus{
 }
 
 .rankingNumber {
-  font-size:12em;
+  font-size:10em;
   opacity: 0.2;
   position:absolute;
-  top:0.1em;
+  bottom:0em;
   right:0.2em;
 }
 
