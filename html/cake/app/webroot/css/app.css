@@ -199,6 +199,7 @@ section .tile:hover .inner .caption {
   max-width: 60em;
   clear:both;
   position: relative;
+  overflow: hidden;
 
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -248,10 +249,11 @@ div.spotName a:hover, div.spotName a:focus{
 
 .rankingNumber {
   font-size:10em;
+  color: #999;
   opacity: 0.2;
   position:absolute;
-  bottom:0em;
-  right:0.2em;
+  bottom:-0.1em;
+  right:0.1em;
 }
 
 .spotMultipleLocations {
