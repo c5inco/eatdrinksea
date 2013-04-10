@@ -30,7 +30,8 @@
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
-Router::connect('/pages/like', array('controller' => 'pages', 'action' => 'like'));
+	Router::connect('/pages/like', array('controller' => 'pages', 'action' => 'like'));
+ 	Router::connect('/pages/categoryByLocation', array('controller' => 'pages', 'action' => 'categoryByLocation'));
  	Router::connect('/*', array('controller' => 'pages', 'action' => 'category'));
 	
 
@@ -45,3 +46,8 @@ Router::connect('/pages/like', array('controller' => 'pages', 'action' => 'like'
  * the built-in default routes.
  */
 	require CAKE . 'Config' . DS . 'routes.php';
+
+/**
+ * Extensions
+ */
+	Router::parseExtensions('json');

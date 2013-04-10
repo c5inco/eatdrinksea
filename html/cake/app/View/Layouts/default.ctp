@@ -36,6 +36,8 @@
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+		echo $this->Html->script('http://code.jquery.com/jquery-1.9.1.min.js');
+		echo $this->Html->script('mustache');
 		echo $this->Html->script('eatdrink');
 	?>
 </head>

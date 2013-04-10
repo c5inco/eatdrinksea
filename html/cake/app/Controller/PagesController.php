@@ -75,11 +75,31 @@ class PagesController extends AppController {
 	}
 
 	public function category($category) {
-		$this->set('category', $category);
+		if ($this->request->data('lat') && $this->request->data('long')) {
+			$lat = (float) $this->request->data('lat');
+			$long = (float) $this->request->data('long');
+			$this->set(compact('category', 'lat', 'long'));	
+		} else {
+			$this->set('category', $category);
+		}
+	}
+	
+	public function categoryByLocation() {
+		$this->layout = 'ajax';
+		if ($this->request->data('category') && $this->request->data('lat') && $this->request->data('long')) {
+			$category = $this->request->data('category');
+			$lat = (float) $this->request->data('lat');
+			$long = (float) $this->request->data('long');
+			
+			$this->set(compact('category', 'lat', 'long'));
+		} else {
+			echo 'Location required';
+			exit;
+		}
 	}
 
 	public function like() {
-		$eatdrink_config = Configure :: read('apiKey');
+		$eatdrink_config = Configure :: read('connection');
 		$apiKey = $eatdrink_config['apiKey'];
 
 		$this->autoRender = false;
@@ -95,12 +115,10 @@ class PagesController extends AppController {
 		$HttpSocket = new HttpSocket();			
 
 		$body = $HttpSocket->request(array(
-		'method' => 'PUT',
-		'uri' => $urlCall,
-		'header' => array('Content-Type' => 'application/json'),
-		'body' => $datajson,
+			'method' => 'PUT',
+			'uri' => $urlCall,
+			'header' => array('Content-Type' => 'application/json'),
+			'body' => $datajson
 		));
-
-		
-			}
+	}
 }

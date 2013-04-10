@@ -258,10 +258,29 @@ div.spotName a:hover, div.spotName a:focus{
   margin-left: 1em;
 }
 
+.location-filter {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 999;
+	padding: .6em 0;
+	text-align: center;
+	font-size: 1.4em;
+	font-weight: 600;
+	background-color: #eee;
+	-moz-box-shadow:    0 1px 10px #999;
+  	-webkit-box-shadow: 0 1px 10px #999;
+  	box-shadow:         0 1px 10px #999;
+}
+
+#location-address {
+	font-size: .8em;
+}
+
 footer {
   font-size:1.2em;
   text-align: center;
-  margin: 3em 0 1.5em;
+  margin: 3em 0 4em;
 }
 a{
   text-decoration: none;

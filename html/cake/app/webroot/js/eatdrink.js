@@ -1,7 +1,10 @@
 var KONAMIATTEMPT = "";
 var THECODE = "38384040373937396665";
+var spotsTmpl;
 
 $(document).ready(function() {
+	spotsTmpl = Mustache.compile($('#spots-tmpl').text());
+	
 	$(document).on("keydown", function(){
 		//Save keycode of button press as string
 		var keycode = "" + (event.keyCode ? event.keyCode : event.which);
@@ -47,7 +50,7 @@ $(document).ready(function() {
 	            },
 	            success: function(response) {
 	                $(card).find('.spotLikes').text(likesNum);
-	                SetCookie(name, "like", 999999);
+	                setCookie(name, "like", 999999);
 	                $(card).find('.likeButton').removeClass('likeButton').addClass('likeButtonDisabled').text('');
 	            }  
 			});
@@ -83,7 +86,7 @@ function getCookie(name) {
     return unescape(dc.substring(begin + prefix.length, end));
 } 
 
-function SetCookie(cookieName,cookieValue,nDays) {
+function setCookie(cookieName,cookieValue,nDays) {
 	 var today = new Date();
 	 var expire = new Date();
 	 if (nDays==null || nDays==0) nDays=1;
@@ -108,4 +111,77 @@ function konamiCode(keycode) {
 		//Do your whatever you'd like to do here once the user has successfully entered the Konami Code
 		alert("The konami code hit!");
 	};
+}
+
+function sortByLocation() {
+	if (navigator.geolocation) {
+		// TODO: Store location in cookie for later use
+		navigator.geolocation.getCurrentPosition(function(position) {
+			getLocation(position.coords.latitude, position.coords.longitude);
+		}, function(error) {
+			$('#location-address').text(' | Unable to get current location');
+			// error.code can be:
+			//   0: unknown error
+			//   1: permission denied
+			//   2: position unavailable (error response from locaton provider)
+			//   3: timed out
+		});
+	}
+}
+
+function getLocation(latitude, longitude) {
+	$.ajax({
+		url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true',
+		type: 'GET',
+		beforeSend : function() {
+			$('#location-address').text(' | Getting location...');
+		}
+	}).fail(function() {
+		updateLocation('')
+	}).done(updateLocation);
+	
+	var curl = window.location.href;
+	var category = curl.substring(curl.lastIndexOf('/') + 1);
+	$.ajax({
+		url: 'pages/categoryByLocation',
+		type: 'POST',
+		data: { 
+			'category': category, 
+			'long' : longitude, 
+			'lat' : latitude
+		}
+	}).done(populateList);
+}
+
+function updateLocation(data) {
+	var location = 'No location, please try again';
+	$('#location-button').text('Update My Location');
+	if (data !== '') {
+		var result = data['results'][0];
+		var location = result.address_components[0].short_name;
+		location += ' ' + result.address_components[1].short_name;
+	}
+	$('#location-address').text(' | ' + location);
+}
+
+function populateList(data) {
+	if (data) {
+		var spots = $.parseJSON(data);
+		var h = "";
+		$(spots).each(function() {
+			this.id = this._id.$oid;
+			this.phone_styled = phoneStyled(this.phone);
+			this.twitter_handle = twitterHandle(this.twitter);
+			h += spotsTmpl(this);
+		});
+		$('.spots-list').empty();
+		$('.spots-list').append(h);
+	}
+}
+
+function phoneStyled(number) {
+	return number.substring(0, 3) + '.' + number.substring(3, 6) + '.' + number.substring(6);
+}
+function twitterHandle(url) {
+	return url.substring(url.lastIndexOf('/') + 1);
 }

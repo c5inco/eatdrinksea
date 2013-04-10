@@ -1,29 +1,27 @@
 <?php 
-echo $this->element('categoryHeader');
-
 App::uses('HttpSocket', 'Network/Http');
 $eatdrink_config = Configure :: read('connection');
-$eatdrinkConnectionString = $eatdrink_config['spotsdb'];
 
 $http = new HttpSocket();
-$response = $http->get($eatdrinkConnectionString);
+$spotsArray = array();
 
+echo $this->element('categoryHeader');
+
+$cstring = $eatdrink_config['spots-db'];
+$response = $http->get($cstring);
 
 $json = json_decode($response);
 
-$spotsArray = array();
-
-$selectedCategory = $category;
-
 //Grab the spots for a specific category
 foreach ($json as $key => $value) { 
-	if ($json[$key]->category == $selectedCategory)
+	if ($json[$key]->category == $category)
 	{
      	array_push($spotsArray, $json[$key]);
     }
 }
 
 //print out all the spots for that category that was filtered out
+echo '<div class="spots-list">';
 foreach($spotsArray as $key => $spot)
 {
 	//echo '<div class="labelField"></div>';
@@ -37,7 +35,7 @@ foreach($spotsArray as $key => $spot)
 	{
 		$tw = $spotsArray[$key]->twitter;
 		$tw = substr($tw, strrpos($tw, "/") + 1);
-	echo '<div class="displayField spotTwitter"><a class="" href="'.$spotsArray[$key]->twitter.'">@'.$tw.'</a></div>';
+		echo '<div class="displayField spotTwitter"><a class="" href="'.$spotsArray[$key]->twitter.'">@'.$tw.'</a></div>';
 	}
 	echo '<div class="displayField"><span>Multiple Locations?</span><span class="spotMultipleLocations">'.$spotsArray[$key]->multipleLocations.'</span></div>';
 	echo '<div class="likeHolder"><span class="likesLabel"># of likes?</span>';
@@ -55,5 +53,6 @@ foreach($spotsArray as $key => $spot)
 	echo '</div>';
 	echo '</section>';
 }
+echo '</div>';
 echo $this->element('footer');
 ?>
