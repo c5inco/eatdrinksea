@@ -33,44 +33,46 @@ $(document).ready(function() {
 	});
 
 	//Logic for when the user clicks the like button to place a like
-	$('.likeButton').on('click', function() {
-		var name = $(this).parent().parent().find('.spotName').text();
-		if(checkCookie(name))
-		{
-			var likesNum = parseInt($(this).parent().find('.spotLikes').text());
-			likesNum += 1;
-			likesNum.toString();
-			card = $(this).parent();
-	       $.ajax({
-	            url: '/pages/like',
-	            type: 'POST',
-	            data: {
-	                id: $(this).parent().parent().find('.spotID').val(),
-	                likes: likesNum,                  
-	            },
-	            success: function(response) {
-	                $(card).find('.spotLikes').text(likesNum);
-	                setCookie(name, "like", 999999);
-	                $(card).find('.likeButton').removeClass('likeButton').addClass('likeButtonDisabled').text('');
-	            }  
-			});
-	   }
-   });
+	$('.likeButton').on('click', likeSpot);
 });
+
+function likeSpot() {
+	var name = $(this).parent().parent().find('.spotName').text();
+	if(checkCookie(name))
+	{
+		var likesNum = parseInt($(this).parent().find('.spotLikes').text());
+		likesNum += 1;
+		likesNum.toString();
+		var card = $(this).parent();
+		$.ajax({
+            url: '/pages/like',
+            type: 'POST',
+            data: {
+                id: $(this).parent().parent().find('.spotID').val(),
+                likes: likesNum,                  
+            },
+            success: function(response) {
+                $(card).find('.spotLikes').text(likesNum);
+                setCookie(name, "like", 999999);
+                $(card).find('.likeButton').removeClass('likeButton').addClass('likeButtonDisabled').text('');
+            }  
+		});
+	}
+}
 
 function checkCookie(name)
 {
 	var like = getCookie(name);
-	  if (like == null || like == "")
-	  {
-	  	return true;
-	  }
+	if (!like || like === "") {
+		return true;
+	}
 }
 
 function getCookie(name) {
     var dc = document.cookie;
     var prefix = name + "=";
     var begin = dc.indexOf("; " + prefix);
+	var end;
     if (begin == -1) {
         begin = dc.indexOf(prefix);
         if (begin != 0) return null;
@@ -78,9 +80,9 @@ function getCookie(name) {
     else
     {
         begin += 2;
-        var end = document.cookie.indexOf(";", begin);
+        end = document.cookie.indexOf(";", begin);
         if (end == -1) {
-        end = dc.length;
+        	end = dc.length;
         }
     }
     return unescape(dc.substring(begin + prefix.length, end));
@@ -91,8 +93,7 @@ function setCookie(cookieName,cookieValue,nDays) {
 	 var expire = new Date();
 	 if (nDays==null || nDays==0) nDays=1;
 	 expire.setTime(today.getTime() + 3600000*24*nDays);
-	 document.cookie = cookieName+"="+escape(cookieValue)
-	                 + ";expires="+expire.toGMTString();
+	 document.cookie = cookieName+"="+escape(cookieValue) + ";expires="+expire.toGMTString();
 }
 
 function konamiCode(keycode) {
@@ -119,7 +120,7 @@ function sortByLocation() {
 		navigator.geolocation.getCurrentPosition(function(position) {
 			getLocation(position.coords.latitude, position.coords.longitude);
 		}, function(error) {
-			$('#location-address').text(' | Unable to get current location');
+			$('#location-address').text(' | Unable to get location');
 			// error.code can be:
 			//   0: unknown error
 			//   1: permission denied
@@ -134,7 +135,7 @@ function getLocation(latitude, longitude) {
 		url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true',
 		type: 'GET',
 		beforeSend : function() {
-			$('#location-address').text(' | Getting location...');
+			$('#location-address').text(' | Locating...');
 		}
 	}).fail(function() {
 		updateLocation('')
@@ -154,8 +155,8 @@ function getLocation(latitude, longitude) {
 }
 
 function updateLocation(data) {
-	var location = 'No location, please try again';
-	$('#location-button').text('Update My Location');
+	var location = 'Unable to get location';
+	$('#location-button').text('Update location');
 	if (data !== '') {
 		var result = data['results'][0];
 		var location = result.address_components[0].short_name;
@@ -168,17 +169,28 @@ function populateList(data) {
 	if (data) {
 		var spots = $.parseJSON(data);
 		var h = "";
-		$(spots).each(function() {
+		$(spots).each(function(i) {
 			this.id = this._id.$oid;
 			this.phone_styled = phoneStyled(this.phone);
 			this.twitter_handle = twitterHandle(this.twitter);
+			this.likeBtn = displayLike(this.name);
+			this.ranking = i + 1;
 			h += spotsTmpl(this);
 		});
 		$('.spots-list').empty();
-		$('.spots-list').append(h);
+		
+		var spotsHtml = $.parseHTML(h);
+		$(spotsHtml).find('.likeButton').on('click', likeSpot);
+		$('.spots-list').append(spotsHtml);
 	}
 }
 
+function displayLike(spotName) {
+	if(!getCookie(spotName) || getCookie(spotName) === '') {
+		return '<div class="likeButton">Like</div>';
+	}	
+	return '<div class="likeButtonDisabled"></div>';
+}
 function phoneStyled(number) {
 	return number.substring(0, 3) + '.' + number.substring(3, 6) + '.' + number.substring(6);
 }

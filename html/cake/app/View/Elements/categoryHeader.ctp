@@ -53,14 +53,15 @@
 				<span class="spotMultipleLocations">{{multipleLocations}}</span>
 			</div>
 			<div class="likeHolder">
-				<div class="likeButton">Like</div>
+				<span class="likesLabel"># of likes?</span>
 				<div class="displayField spotLikes">{{likes}}</div>
+				{{& likeBtn}}
 			</div>
-			<div class="rankingNumber"></div>
+			<div class="rankingNumber">{{ranking}}</div>
 		</div>
 	</section>
 </script>
 <div class="location-filter">
-	<a id="location-button" href="javascript:sortByLocation()">Sort by My Location</a>
+	<a id="location-button" href="javascript:sortByLocation()">Use my location</a>
 	<span id="location-address"></span>
 </div>
