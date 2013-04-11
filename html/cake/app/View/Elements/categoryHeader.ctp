@@ -7,38 +7,40 @@
 	</header>
 </a>
 <nav class="categoryNav">
-<a href="/coffee">
-	<div class='tile'>
-		<div class='inner coffee'>
-		  <div class='graphic coffee'></div>
-		  <div class='caption'>coffee</div> 
-		</div>
+	<div class="nav-inner">
+		<a href="/coffee">
+			<div class='tile'>
+				<div class='inner coffee'>
+				  <div class='graphic coffee'></div>
+				  <div class='caption'>coffee</div> 
+				</div>
+			</div>
+		</a>
+		<a href="/bpts">
+			<div class="tile">
+				<div class='inner bpts'>
+				  <div class='graphic bpts'></div>
+				  <div class='caption'>bpts</div>  
+				</div>
+			</div>
+		</a>
+		<a href="/beer">
+			<div class='tile'>
+				<div class='inner beer'>
+				  <div class='graphic beer'></div>
+				  <div class='caption'>beer</div>
+				</div>
+			</div>
+		</a>
+		<a href="/local">
+			<div class='tile'>
+				<div class='inner local'>
+				  <div class='graphic pnw'></div>
+				  <div class='caption'>pnw</div>
+				</div>
+			</div>
+		</a>
 	</div>
-</a>
-<a href="/bpts">
-	<div class="tile">
-		<div class='inner bpts'>
-		  <div class='graphic bpts'></div>
-		  <div class='caption'>bpts</div>  
-		</div>
-	</div>
-</a>
-<a href="/beer">
-	<div class='tile'>
-		<div class='inner beer'>
-		  <div class='graphic beer'></div>
-		  <div class='caption'>beer</div>
-		</div>
-	</div>
-</a>
-<a href="/local">
-	<div class='tile'>
-		<div class='inner local'>
-		  <div class='graphic pnw'></div>
-		  <div class='caption'>pnw</div>
-		</div>
-	</div>
-</a>
 </nav>
 <script type="text/html" id="spots-tmpl">
 	<section class="spotCard">

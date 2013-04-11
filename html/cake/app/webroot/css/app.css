@@ -131,10 +131,15 @@ section .tile:hover .inner .caption {
 }
 
 .categoryNav {
-  height: 5em;
   width:100%;
-  max-width: 100em;
-  margin:0 auto 2em auto;
+  background-color: #5e9732;
+  margin-bottom: 2em;
+}
+
+.categoryNav .nav-inner {
+  max-width: 68em;
+  height: 5em;
+  margin: 0 auto;
 }
 
 .categoryNav .tile {
@@ -335,7 +340,7 @@ a:hover, footer a:focus {
   section.row {
     padding: 3% 0;
   }
-  .categoryNav {
+  .categoryNav .nav-inner {
     height: 4em;
   }
   .categoryNav .tile {
