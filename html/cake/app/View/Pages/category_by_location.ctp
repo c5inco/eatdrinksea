@@ -7,7 +7,7 @@ $spotsArray = array();
 
 $data = array(
 	"geoNear" => "Spots",
-	"near" => [$long, $lat],
+	"near" => array($long, $lat),
 	"num" => 10,
 	"query" => array("category" => $category)
 );
