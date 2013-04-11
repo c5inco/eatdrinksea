@@ -12,6 +12,8 @@ $response = $http->get($cstring);
 
 $json = json_decode($response);
 
+echo '<input type="hidden" class="currentCategory" value="'.$category.'" />';
+
 //Grab the spots for a specific category
 foreach ($json as $key => $value) { 
 	if ($json[$key]->category == $category)

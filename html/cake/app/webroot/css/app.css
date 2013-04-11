@@ -130,6 +130,10 @@ section .tile:hover .inner .caption {
   color: #095694;
 }
 
+.categoryNav a .tile .inner.selected {
+  background-color: #095694;
+}
+
 .categoryNav {
   height: 5em;
   width:100%;

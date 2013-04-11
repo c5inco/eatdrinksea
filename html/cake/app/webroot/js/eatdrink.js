@@ -15,7 +15,7 @@ $(document).ready(function() {
 	//Logic to highlight the selected category in the nav menu
 	var cat = $('.currentCategory').val();
 	$('.selected').removeClass('selected');
-	$('.tile .' + cat).addClass('selected');
+	$('.categoryNav .tile .inner.'+ cat).addClass('selected');
 
 	//Logic to trim the ids of each spot and make usable
 	$('.spotID').each(function( index ) {
