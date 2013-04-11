@@ -62,6 +62,4 @@
 	</section>
 </script>
 <div id="location-address"></div>
-<div class="sort-filter">
-	<a id="sort-button" href="javascript:sortSpots()">Sort by my location</a>
-</div>
+<a id="sort-button" href="javascript:sortSpots()">Sort by my location</a>

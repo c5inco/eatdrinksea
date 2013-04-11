@@ -130,10 +130,6 @@ section .tile:hover .inner .caption {
   color: #095694;
 }
 
-.categoryNav a .tile .inner.selected {
-  background-color: #095694;
-}
-
 .categoryNav {
   height: 5em;
   width:100%;
@@ -153,14 +149,18 @@ section .tile:hover .inner .caption {
   -moz-box-sizing: border-box;
 }
 
-.categoryNav .tile:hover .inner, .categoryNav .tile:focus .inner{
-  background-color: #095694;
-}
-
 .categoryNav .tile .inner {
   background-color: #5e9732;
   height: 100%;
   position: relative;
+}
+
+.categoryNav .tile:hover .inner, .categoryNav .tile:focus .inner{
+  background-color: rgba(9, 86, 148, .8);
+}
+
+.categoryNav .tile .inner.selected {
+  background-color: #095694;
 }
 
 .categoryNav .tile .graphic{
@@ -264,10 +264,11 @@ div.spotName a:hover, div.spotName a:focus{
   margin-left: 1em;
 }
 
-.sort-filter {
+#sort-button {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
+	display: block;
 	z-index: 999;
 	padding: .6em 0;
 	text-align: center;
