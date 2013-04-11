@@ -264,7 +264,7 @@ div.spotName a:hover, div.spotName a:focus{
   margin-left: 1em;
 }
 
-.location-filter {
+.sort-filter {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -280,7 +280,13 @@ div.spotName a:hover, div.spotName a:focus{
 }
 
 #location-address {
-	font-size: .8em;
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: .5em;
+}
+
+#location-address .update-link {
+	cursor: hand;
 }
 
 footer {
@@ -343,6 +349,10 @@ a:hover, footer a:focus {
   }
   .categoryNav .tile .inner .graphic {
 	  
+  }
+  
+  #location-address {
+	font-size: 1.3em;
   }
   
   section .tile {

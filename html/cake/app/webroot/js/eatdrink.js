@@ -114,20 +114,44 @@ function konamiCode(keycode) {
 	};
 }
 
-function sortByLocation() {
-	if (navigator.geolocation) {
-		// TODO: Store location in cookie for later use
-		navigator.geolocation.getCurrentPosition(function(position) {
-			getLocation(position.coords.latitude, position.coords.longitude);
-		}, function(error) {
-			$('#location-address').text(' | Unable to get location');
-			// error.code can be:
-			//   0: unknown error
-			//   1: permission denied
-			//   2: position unavailable (error response from locaton provider)
-			//   3: timed out
-		});
+var LIKES_FILTER = 'likes';
+var LOC_FILTER = 'location';
+var activeSort = LIKES_FILTER;
+function sortSpots() {
+	if (activeSort === LIKES_FILTER) {
+		if (navigator.geolocation) {
+			sortByLocation();
+		}
+	} else {
+		getSpots('pages/categoryByLikes', { });
 	}
+}
+
+function toggleSortFilter(byLocation) {
+	if (byLocation) {
+		activeSort = LOC_FILTER;
+		$('#sort-button').text('Sort by likes');
+	} else {
+		activeSort = LIKES_FILTER;
+		$('#location-address').empty();
+		$('#sort-button').text('Sort by my location');
+	}
+}
+
+function sortByLocation() {
+	navigator.geolocation.getCurrentPosition(function(position) {
+		getLocation(position.coords.latitude, position.coords.longitude);
+		getSpots('pages/categoryByLocation', { 'long': position.coords.longitude, 'lat': position.coords.latitude });
+	}, function(error) {
+		$('#location-address').text('Unable to get location | ');
+		$('#location-address').append($('<a class="update-link">Try again</a>').on('click', sortByLocation));
+		toggleSortFilter(true);
+		// error.code can be:
+		//   0: unknown error
+		//   1: permission denied
+		//   2: position unavailable (error response from locaton provider)
+		//   3: timed out
+	}, { timeout:10000 });
 }
 
 function getLocation(latitude, longitude) {
@@ -135,36 +159,42 @@ function getLocation(latitude, longitude) {
 		url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true',
 		type: 'GET',
 		beforeSend : function() {
-			$('#location-address').text(' | Locating...');
+			$('#location-address').text('Locating...');
 		},
 		dataType: 'json'
 	}).fail(function() {
 		updateLocation('')
 	}).done(updateLocation);
-	
-	var curl = window.location.href;
-	var category = curl.substring(curl.lastIndexOf('/') + 1);
-	$.ajax({
-		url: 'pages/categoryByLocation',
-		type: 'POST',
-		data: { 
-			'category': category, 
-			'long' : longitude, 
-			'lat' : latitude
-		},
-		dataType: 'json'
-	}).done(populateList);
 }
 
 function updateLocation(data) {
 	var location = 'Unable to get location';
-	$('#location-button').text('Update location');
+	var msg = 'Try again';
 	if (data !== '') {
 		var results = data.results[0];
-		var location = results.address_components[0].short_name;
-		location += ' ' + results.address_components[1].short_name;
+		location = '@ ' + results.address_components[0].short_name + ' ' + results.address_components[1].short_name;
+		msg = 'Update';
 	}
-	$('#location-address').text(' | ' + location);
+	$('#location-address').text(location + ' | ');
+	$('#location-address').append($('<a class="update-link">' + msg + '</a>').on('click', sortByLocation));
+}
+
+function getSpots(url, data, byLocation) {
+	var curl = window.location.href;
+	data.category = curl.substring(curl.lastIndexOf('/') + 1);
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: data,
+		dataType: 'json'
+	}).done(function(data) {
+		populateList(data);
+		if ((/likes/i).test(url)) {
+			toggleSortFilter(false);
+		} else {
+			toggleSortFilter(true);
+		}
+	});
 }
 
 function populateList(data) {

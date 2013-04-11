@@ -84,6 +84,17 @@ class PagesController extends AppController {
 		}
 	}
 	
+	public function categoryByLikes() {
+		$this->layout = 'ajax';
+		if ($this->request->data('category')) {
+			$category = $this->request->data('category');			
+			$this->set(compact('category'));
+		} else {
+			echo 'Category required';
+			exit;
+		}
+	}
+	
 	public function categoryByLocation() {
 		$this->layout = 'ajax';
 		if ($this->request->data('category') && $this->request->data('lat') && $this->request->data('long')) {

@@ -31,6 +31,7 @@
  * ...and connect the rest of 'Pages' controller's urls.
  */
 	Router::connect('/pages/like', array('controller' => 'pages', 'action' => 'like'));
+	Router::connect('/pages/categoryByLikes', array('controller' => 'pages', 'action' => 'categoryByLikes'));
  	Router::connect('/pages/categoryByLocation', array('controller' => 'pages', 'action' => 'categoryByLocation'));
  	Router::connect('/*', array('controller' => 'pages', 'action' => 'category'));
 	
