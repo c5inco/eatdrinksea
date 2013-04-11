@@ -136,7 +136,8 @@ function getLocation(latitude, longitude) {
 		type: 'GET',
 		beforeSend : function() {
 			$('#location-address').text(' | Locating...');
-		}
+		},
+		dataType: 'json'
 	}).fail(function() {
 		updateLocation('')
 	}).done(updateLocation);
@@ -150,7 +151,8 @@ function getLocation(latitude, longitude) {
 			'category': category, 
 			'long' : longitude, 
 			'lat' : latitude
-		}
+		},
+		dataType: 'json'
 	}).done(populateList);
 }
 
@@ -158,18 +160,17 @@ function updateLocation(data) {
 	var location = 'Unable to get location';
 	$('#location-button').text('Update location');
 	if (data !== '') {
-		var result = data['results'][0];
-		var location = result.address_components[0].short_name;
-		location += ' ' + result.address_components[1].short_name;
+		var results = data.results[0];
+		var location = results.address_components[0].short_name;
+		location += ' ' + results.address_components[1].short_name;
 	}
 	$('#location-address').text(' | ' + location);
 }
 
 function populateList(data) {
 	if (data) {
-		var spots = $.parseJSON(data);
 		var h = "";
-		$(spots).each(function(i) {
+		$(data).each(function(i) {
 			this.id = this._id.$oid;
 			this.phone_styled = phoneStyled(this.phone);
 			this.twitter_handle = twitterHandle(this.twitter);
