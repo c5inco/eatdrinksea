@@ -292,7 +292,7 @@ div.spotName a:hover, div.spotName a:focus{
 }
 
 #location-address .update-link {
-	cursor: hand;
+	cursor: pointer;
 }
 
 footer {
