@@ -34,6 +34,7 @@ $(document).ready(function() {
 
 	//Logic for when the user clicks the like button to place a like
 	$('.likeButton').on('click', likeSpot);
+	$('.likeButton').on('keypress', likeSpot);
 });
 
 function likeSpot() {
@@ -218,7 +219,7 @@ function populateList(data) {
 
 function displayLike(spotName) {
 	if(!getCookie(spotName) || getCookie(spotName) === '') {
-		return '<div class="likeButton">Like</div>';
+		return '<div class="likeButton" tabindex="0">Like</div>';
 	}	
 	return '<div class="likeButtonDisabled"></div>';
 }
