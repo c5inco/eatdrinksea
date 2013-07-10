@@ -52,4 +52,5 @@
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
+<?php echo $this->element('analyticstracking'); ?>
 </html>
