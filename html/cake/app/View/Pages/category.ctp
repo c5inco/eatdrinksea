@@ -34,7 +34,7 @@ foreach($json as $key => $value)
 	$cookieName = str_replace(' ', '_', $value->name);
 	if(!isset($_COOKIE[$cookieName]))
 	{
-		echo '<div class="likeButton">Like</div>';
+		echo '<div role="button" class="likeButton" tabindex="0">Like</div>';
 	}
 	else {
 		echo '<div class="likeButtonDisabled"></div>';
