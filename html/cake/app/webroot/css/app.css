@@ -11,7 +11,7 @@ a.categoryLink:focus {
 }
 
 #content {
-	padding: 0;
+  padding: 0;
 }
 
 header {
@@ -63,7 +63,7 @@ section.row > .categoryLink {
   display:inline-block;
   width: 25%;
   float:left;
-
+  padding: 0 0.5em;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -72,76 +72,75 @@ section.row > .categoryLink {
 section .tile {
   height: 18em;
   width: 100%;
-  padding: 0 .5em;
   cursor: pointer;
-
+  background-color: #fff;
+  box-shadow: 0px 4px 16px -6px #999;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-section .categoryLink:hover, section .categoryLink:focus {
-    -webkit-transform: scale(1.05); 
-     -moz-transform: scale(1.05); 
-      -ms-transform: scale(1.05);
-       -o-transform: scale(1.05);
-          transform: scale(1.05); 
-  }
 
-section .tile .inner {
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  -moz-box-shadow:    0px 4px 16px -6px #999;
-  -webkit-box-shadow: 0px 4px 16px -6px #999;
-  box-shadow:         0px 4px 16px -6px #999;
+.categoryLink {
+  -webkit-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
 }
 
-section .tile .inner .graphic{
+.categoryLink:hover, .categoryLink:focus {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05); 
+}
+
+.tile .graphic{
   height: 65%;
   background-color: #5e9732;
 }
 
-section .categoryLink:hover .inner .graphic, section .categoryLink:focus .inner .graphic{
+.categoryLink:hover .graphic, .categoryLink:focus .graphic{
   background-color: #095694;
+  color: #5e9732;
 }
 
-.tile .inner .graphic.coffee {
+.tile .graphic {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+}
+
+.tile .graphic.coffee {
   background-image: url('/img/coffee.svg');
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
-.tile .inner .graphic.bpts {
+.tile .graphic.bpts {
   background-image: url('/img/bpts.svg');
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
-.tile .inner .graphic.beer {
+.tile .graphic.beer {
   background-image: url('/img/beer.svg');
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
-.tile .inner .graphic.pnw {
+.tile .graphic.pnw {
   background-image: url('/img/pnw.svg');
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
-.tile .inner .caption {
+.tile .caption {
   height: 35%;
   font-family: 'Josefin Slab', Helvetica, Georgia, sans-serif;
   font-size: 40px;
   font-weight: 300;
   letter-spacing: -.04em;
   text-align: center;
-  margin-top: 4%;
+  margin-top: 7%;
   color: #666;
-    box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+
+.tile .bptsSubCaption {
+  display: block;
+  font-size:16px;
+}
+
 section .categoryLink:hover .inner .caption, section .categoryLink:focus .inner .caption {
   color: #095694;
 }
@@ -241,8 +240,6 @@ section .categoryLink:hover .inner .caption, section .categoryLink:focus .inner 
   font-size: 1.2em;
   background-color:white;
   border-top: solid 5px #095694;
-  -moz-box-shadow:    0px 4px 16px -6px #999;
-  -webkit-box-shadow: 0px 4px 16px -6px #999;
   box-shadow:         0px 4px 16px -6px #999;
 }
 .displayField {
@@ -290,29 +287,27 @@ div.spotName a:hover, div.spotName a:focus{
 }
 
 #sort-button {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	display: block;
-	z-index: 999;
-	padding: .6em 0;
-	text-align: center;
-	font-size: 1.4em;
-	font-weight: 600;
-	background-color: #eee;
-	-moz-box-shadow:    0 1px 10px #999;
-  	-webkit-box-shadow: 0 1px 10px #999;
-  	box-shadow:         0 1px 10px #999;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: block;
+  z-index: 999;
+  padding: .6em 0;
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: 600;
+  background-color: #eee;
+  box-shadow:         0 1px 10px #999;
 }
 
 #location-address {
-	text-align: center;
-	font-size: 2em;
-	margin-bottom: .5em;
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: .5em;
 }
 
 #location-address .update-link {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 footer {
@@ -344,18 +339,11 @@ a:hover, footer a:focus {
 
   section.row > .categoryLink {
     width: 50%;
-  }
-
-  section .tile {
-    padding: 0 0 1em;
-  }
-  
-  section a:nth-of-type(even) .tile {
-  	padding-left: 1em; 
+    margin-bottom: 0.5em;
   }
   
   .spotCard {
-	padding: 0 .5em;
+    padding: 0 .5em;
   }
 }
 
@@ -368,45 +356,40 @@ a:hover, footer a:focus {
   }
   .categoryNav .tile {
     height:4em;
+    text-align: center;
   }
 
   .categoryNav .tile .caption {
     font-size: 1.8em;
   }
-  .categoryNav .tile .inner {
-    text-align: center;
-  }
   
   #location-address {
-	font-size: 1.3em;
+    font-size: 1.3em;
   }
   
-    section.row > .categoryLink {
+  section.row > .categoryLink {
     width: 100%;
   }
 
   section .tile {
     height:7em;
-    padding-bottom: .5em;
   }
-  section a:nth-of-type(even) .tile {
-  	padding: 0 0 .5em; 
+
+  section .tile .graphic{
+    height: 100%;
+    width:34%;
+    display: inline-block;
+    background-color: #5e9732;
   }
-  section .tile .inner .graphic{
-  height: 100%;
-  width:34%;
-  display: inline-block;
-  background-color: #5e9732;
-}
-  section .tile .inner .caption {
+  section .tile .caption {
     height: 100%;
     width:64%;
     vertical-align: top;
-    padding-top:0.4em;
+    padding-top:0.55em;
     display: inline-block;
     margin-top:0;
-}
-  section .tile .inner .graphic  {
-  background-size: 43%;
-}
+  }
+  section .tile .graphic  {
+    background-size: 55%;
+  }
 }

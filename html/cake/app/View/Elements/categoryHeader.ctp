@@ -8,7 +8,7 @@
 </a>
 <nav class="categoryNav">
 	<div class="nav-inner">
-		<a href="/coffee" class="catNavLink">
+		<a href="/coffee" title="coffee" class="catNavLink">
 			<div class='tile'>
 				<div class='inner coffee'>
 				  <div class='graphic coffee'></div>
@@ -16,7 +16,7 @@
 				</div>
 			</div>
 		</a>
-		<a href="/bpts" class="catNavLink">
+		<a href="/bpts" title="burgers, pizza, tacos, sandwiches" class="catNavLink">
 			<div class="tile">
 				<div class='inner bpts'>
 				  <div class='graphic bpts'></div>
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 		</a>
-		<a href="/beer" class="catNavLink">
+		<a href="/beer" title="beer" class="catNavLink">
 			<div class='tile'>
 				<div class='inner beer'>
 				  <div class='graphic beer'></div>
@@ -32,7 +32,7 @@
 				</div>
 			</div>
 		</a>
-		<a href="/local" class="catNavLink">
+		<a href="/local" title="pacific northwest" class="catNavLink">
 			<div class='tile'>
 				<div class='inner local'>
 				  <div class='graphic pnw'></div>

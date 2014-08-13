@@ -23,37 +23,31 @@ echo $this->element('header');
 ?>
 
 <section class="row">
-	<a href="coffee" class="categoryLink">
-		<div class='tile'>
-	      <div class='inner'>
+	<a href="coffee" title="coffee" class="categoryLink">
+	      <div class='tile'>
 	        <div class='graphic coffee'></div>
 	        <div class='caption'>coffee</div>
 	      </div>      
-	    </div>
 	</a>
-	<a href="bpts" class="categoryLink">
-		<div class='tile'>
-	      <div class='inner'>
+	<a href="bpts" title="burgers, pizza, tacos, sandwiches" class="categoryLink">
+	      <div class='tile'>
 	        <div class='graphic bpts'></div>
-	        <div class='caption'>bpts</div>
+	        <div class='caption'>bpts
+        		<span class="bptsSubCaption">(burgers, pizza, tacos, sandwiches)</span>
+	        </div>
 	      </div>      
-	    </div>
 	</a>
-	<a href="beer" class="categoryLink">
-		<div class='tile'>
-	      <div class='inner'>
+	<a href="beer" title="beer" class="categoryLink">
+	      <div class='tile'>
 	        <div class='graphic beer'></div>
 	        <div class='caption'>beer</div>
 	      </div>      
-	    </div>
 	</a>
-	<a href="local" class="categoryLink">
-		<div class='tile'>
-	      <div class='inner'>
+	<a href="local" title="pacific northwest" class="categoryLink">
+	      <div class='tile'>
 	        <div class='graphic pnw'></div>
 	        <div class='caption'>pnw</div>
 	      </div>      
-	    </div>
 	</a>
   </section>
 
