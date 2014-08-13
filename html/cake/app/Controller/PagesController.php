@@ -115,7 +115,7 @@ class PagesController extends AppController {
 
 		$this->autoRender = false;
 		$id = $this->request->data('id');
-		$likes = $this->request->data('likes');
+		$likes = (int) $this->request->data('likes');
 
 		$urlCall = "https://api.mongolab.com/api/1/databases/eatdrinksea/collections/Spots/".$id."?apiKey=".$apiKey."";
 		
